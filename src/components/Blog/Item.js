@@ -3,6 +3,7 @@ import { FaCalendar } from "react-icons/fa/";
 import { FaTag } from "react-icons/fa/";
 import { FaUser } from "react-icons/fa/";
 import Picture from "gatsby-image";
+import PictureDelay from "./PictureDelay";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
@@ -29,7 +30,7 @@ const Item = props => {
       <li>
         <Link to={slug} key={slug} className="link">
           <div className="gatsby-image-outer-wrapper">
-            <Picture fluid={fluid} critical={true}/>
+            <PictureDelay fluid={fluid}/>
           </div>
           <h1>
             {title} <FaArrowRight className="arrow" />
