@@ -14,22 +14,17 @@ export const FontLoadedContext = React.createContext(false);
 
 import themeObjectFromYaml from "../theme/theme.yaml";
 
+import fontOpenSans from "../../static/open_sans_mem8YaGs126MiZpBA-UFW50bbck.woff2";
+
 class Layout extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      font400loaded: false,
-      font600loaded: false,
       screenWidth: 0,
       headerMinimized: false,
       theme: themeObjectFromYaml
     };
-
-    if (typeof window !== `undefined`) {
-      this.loadFont("font400", "Open Sans", 400);
-      this.loadFont("font600", "Open Sans", 600);
-    }
   }
 
   timeouts = {};
@@ -57,22 +52,6 @@ class Layout extends React.Component {
     }
 
     return false;
-  };
-
-  loadFont = (name, family, weight) => {
-    const font = new FontFaceObserver(family, {
-      weight: weight
-    });
-
-    font.load(null, 10000).then(
-      () => {
-        console.log(`${name} is available`);
-        this.setState({ [`${name}loaded`]: true });
-      },
-      () => {
-        console.log(`${name} is not available`);
-      }
-    );
   };
 
   render() {
@@ -111,6 +90,25 @@ class Layout extends React.Component {
                       }
                     `}</style>
                     <style jsx global>{`
+                      @font-face {
+                        font-family: 'openSans600';
+                        font-style: normal;
+                        font-weight: 600;
+                        src: local('Open Sans Regular'), local('OpenSans-Regular'), url(${fontOpenSans}) format('woff2');
+                        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+                      }
+                      @font-face {
+                        font-family: 'openSans400';
+                        font-style: normal;
+                        font-weight: 400;
+                        src: local('Open Sans Regular'), local('OpenSans-Regular'), url(${fontOpenSans}) format('woff2');
+                        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+                      }
+                      @font-face {
+                        font-family: 'arial';
+                        src: local('Arial');
+                        font-weight: 400;
+                      }
                       html {
                         box-sizing: border-box;
                       }
@@ -122,14 +120,12 @@ class Layout extends React.Component {
                         padding: 0;
                       }
                       body {
-                        font-family: ${this.state.font400loaded
-                          ? "'Open Sans', sans-serif;"
-                          : "Arial, sans-serif;"};
+                        font-family: 'openSans400', 'arial';
                       }
                       h1,
                       h2,
                       h3 {
-                        font-weight: ${this.state.font600loaded ? 600 : 400};
+                        font-family: 'openSans600', 'arial';
                         line-height: 1.1;
                         letter-spacing: -0.03em;
                         margin: 0;
@@ -141,7 +137,7 @@ class Layout extends React.Component {
                         margin: 0;
                       }
                       strong {
-                        font-weight: ${this.state.font600loaded ? 600 : 400};
+                        font-family: 'openSans600', 'arial';
                       }
                       a {
                         text-decoration: none;
