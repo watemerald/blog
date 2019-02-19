@@ -20,7 +20,7 @@ class PictureDelay extends Picture {
       }
     }
     componentWillUnmount() {
-      super.componentWillUnmount();
+      //super.componentWillUnmount();
       if (typeof window !== "undefined") {
         window.removeEventListener("load", this.loadPictures);
       }
