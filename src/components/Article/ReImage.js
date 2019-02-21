@@ -22,49 +22,29 @@ const ReImage = props => {
   return (
       <ThemeContext.Consumer>
         {theme => (
-          <a href={fluid.originalImg} target="_blank">
-            <div className="imgContainer">
-              <img src={fluid.tracedSVG} title={props.title} style={{
-                position: 'relative',
-                top: 0,
-                left: 0,
-                margin: '2.5em 0',
-                width: "100%",
-                display: 'block',
-                borderRadius: theme.size.radius.default,
-                overflow: 'hidden'
-              }} />
+          <React.Fragment>
               <Picture
               fluid={fluid}
-              title={props.title}
               style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: "100%",
-                borderRadius: theme.size.radius.default,
-                overflow: 'hidden'
+                transition: '3000ms'
               }}
+              className="test"
               />
-        
-            </div>
-            <style jsx>{`
-              .imgContainer {
-                position: relative;
-                top: 0;
-                left: 0;
+              <style jsx>{`
+              .test img {
+                transition: 3000ms !important;
               }
-              @from-width desktop {
-                :global(picture) {
-                  transition: 300ms ease-in-out;
-                }
-                :global(picture):hover {
-                  opacity: 0;
-                }
+              .test picture {
+                  transition: 3000ms !important;
               }
-            `}</style>
-          </a>
-          
+              img {
+                  transition: 3000ms !important;
+              }
+              picture {
+                  transition: 3000ms !important;
+              }
+              `}</style>
+          </React.Fragment>
         )}
       </ThemeContext.Consumer>
   );
