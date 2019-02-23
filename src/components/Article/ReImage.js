@@ -13,11 +13,14 @@ function locateImage(props) {
   if (filteredPosts.length != 1) {
     throw ("ReImage error! Expected to locate 1 image for " + props.src + ", instead located " + filteredPosts.length);
   }
-  const fluid = filteredPosts[0].node.childImageSharp.fluid
-  return fluid
+  if (props.fluid == 2) {
+    return filteredPosts[0].node.childImageSharp.fluid2
+  }
+  return filteredPosts[0].node.childImageSharp.fluid
 }
 
 const ReImage = props => {
+  console.log(props);
   const fluid = locateImage(props)
   
   return (
@@ -27,6 +30,7 @@ const ReImage = props => {
             <div className="imgContainer">
               <img src={fluid.tracedSVG} title={props.title} style={{
                 position: 'relative',
+                opacity: props.opacity,
                 top: 0,
                 left: 0,
                 margin: '2.5em 0',
@@ -55,13 +59,11 @@ const ReImage = props => {
                 top: 0;
                 left: 0;
               }
-              @from-width desktop {
-                :global(picture) {
-                  transition: 300ms ease-in-out;
-                }
-                :global(picture):hover {
-                  opacity: 0;
-                }
+              :global(picture) {
+                transition: 300ms ease-in-out;
+              }
+              :global(picture):hover {
+                opacity: 0;
               }
             `}</style>
           </a>
@@ -86,7 +88,7 @@ export default props => (
           edges {
             node {
               childImageSharp {
-                fluid(maxWidth: 800, quality: 70, traceSVG: { color: "#f9ebd2", blackOnWhite: true }) {
+                fluid(maxWidth: 800, quality: 90, traceSVG: { color: "#f9ebd2", blackOnWhite: true }) {
                     originalImg
                     tracedSVG
                     src
@@ -95,6 +97,15 @@ export default props => (
                     srcSetWebp
                     sizes
                 }
+                fluid2: fluid(maxWidth: 800, maxHeight: 360, quality: 90, traceSVG: { color: "#f9ebd2", blackOnWhite: true }) {
+                  originalImg
+                  tracedSVG
+                  src
+                  srcSet
+                  aspectRatio
+                  srcSetWebp
+                  sizes
+                }
               }
             }
           }
@@ -102,7 +113,7 @@ export default props => (
       }
     `}
     render={data => (
-      <ReImage data={data} src={props.src} title={props.title} />
+      <ReImage data={data} src={props.src} title={props.title} opacity={props.opacity} fluid={props.fluid}/>
     )}
   />
 )

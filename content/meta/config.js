@@ -17,8 +17,8 @@ module.exports = {
   authorYoutube: "https://www.youtube.com/channel/UCfHqfHoSYL0V_fXA_JQkeLw?view_as=subscriber",
 
   /* header text */
-  headerTitle: "baobab koodaa",
-  headerSubTitle: "",
+  headerTitle: "not my actual blog",
+  headerSubTitle: "just demoing some bugs here",
 
   /* manifest.json */
   manifestName: "Blog of Baobab Koodaa",
