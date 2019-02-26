@@ -122,9 +122,9 @@ module.exports = {
             resolve: `gatsby-remark-rehype-images`,
             options: {
               tag: 're-img',
-              quality: 90,
-              webP: true,
+              maxWidth: 800,
               toFormat: 'WEBP',
+              quality: 90,
               tracedSVG: { color: '#f9ebd2' },
               generateTracedSVG: true
             }
