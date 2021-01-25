@@ -31,8 +31,8 @@ const Post = props => {
       </header>
       <Bodytext content={post} theme={theme} />
       <footer>
-         {/*<Author note={authornote} theme={theme} /> */}
-         <NextPrev next={nextPost} prev={prevPost} theme={theme} />
+        {/*<Author note={authornote} theme={theme} /> */}
+        <NextPrev next={nextPost} prev={prevPost} theme={theme} />
       </footer>
     </React.Fragment>
   );

@@ -8,21 +8,19 @@ import Headline from "../components/Article/Headline";
 import Seo from "../components/Seo";
 
 const ContactPage = props => {
-
   return (
     <React.Fragment>
-        <Article theme={theme}>
-          <header>
-            <Headline title="Contact" theme={theme} />
-          </header>
-          <Contact theme={theme} />
-        </Article>
-      <Seo pageTitle="Contact"/>
+      <Article theme={theme}>
+        <header>
+          <Headline title="Contact" theme={theme} />
+        </header>
+        <Contact theme={theme} />
+      </Article>
+      <Seo pageTitle="Contact" />
     </React.Fragment>
   );
 };
 
-ContactPage.propTypes = {
-};
+ContactPage.propTypes = {};
 
 export default ContactPage;

@@ -4,11 +4,10 @@ import theme from "../theme/theme.yaml";
 import Article from "../components/Article";
 import Headline from "../components/Article/Headline";
 import Seo from "../components/Seo";
-import { FaTag , FaRss , FaPaperPlane } from "react-icons/fa";
+import { FaTag, FaRss, FaPaperPlane } from "react-icons/fa";
 import config from "../../content/meta/config";
 
 const SubscribePage = props => {
-
   return (
     <StaticQuery
       query={graphql`
@@ -20,8 +19,8 @@ const SubscribePage = props => {
           }
         }
       `}
-      render={ queryResults => {
-        const emailSubLink = queryResults.site.siteMetadata.emailSubLink
+      render={queryResults => {
+        const emailSubLink = queryResults.site.siteMetadata.emailSubLink;
         return (
           <React.Fragment>
             <Article theme={theme}>
@@ -32,17 +31,21 @@ const SubscribePage = props => {
 
               <a href="../rss.xml" target="_blank">
                 <section className="subContainer">
-                    <span className="subIcon"><FaRss/></span>
-                    <span className="subText">RSS</span>
+                  <span className="subIcon">
+                    <FaRss />
+                  </span>
+                  <span className="subText">RSS</span>
                 </section>
               </a>
 
-              <a href={emailSubLink} target="_blank">
+              {/* <a href={emailSubLink} target="_blank">
                 <section className="subContainer">
-                  <span className="subIcon"><FaPaperPlane/></span>
+                  <span className="subIcon">
+                    <FaPaperPlane />
+                  </span>
                   <span className="subText">Email</span>
                 </section>
-              </a>
+              </a> */}
 
               <style jsx>{`
                 p {
@@ -67,29 +70,29 @@ const SubscribePage = props => {
                     }
                   }
                 }
-              
+
                 .subText {
-                    text-align: right;
-                    font-size: 20px;
-                    color: ${theme.color.neutral.gray.j};
+                  text-align: right;
+                  font-size: 20px;
+                  color: ${theme.color.neutral.gray.j};
                 }
-                
+
                 .subIcon {
-                    vertical-align: middle;
-                    font-size: 40px;
-                    padding-right: 10px;
-                    :global(svg) {
-                      fill: ${theme.color.brand.primary};
-                    }
+                  vertical-align: middle;
+                  font-size: 40px;
+                  padding-right: 10px;
+                  :global(svg) {
+                    fill: ${theme.color.brand.primary};
+                  }
                 }
               `}</style>
             </Article>
-            <Seo pageTitle="Subscribe"/>
+            <Seo pageTitle="Subscribe" />
           </React.Fragment>
-        )}
-      }
+        );
+      }}
     />
-  )
+  );
 };
 
 export default SubscribePage;

@@ -11,7 +11,7 @@ const Blog = props => {
     <React.Fragment>
       <main className="main">
         <ul>
-          {posts.map((post,index) => {
+          {posts.map((post, index) => {
             const {
               node,
               node: {

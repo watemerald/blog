@@ -22,13 +22,7 @@ const PostTemplate = props => {
       <ThemeContext.Consumer>
         {theme => (
           <Article theme={theme}>
-            <Post
-              post={post}
-              next={next}
-              prev={prev}
-              authornote={authorNote}
-              theme={theme}
-            />
+            <Post post={post} next={next} prev={prev} authornote={authorNote} theme={theme} />
           </Article>
         )}
       </ThemeContext.Consumer>
@@ -69,7 +63,7 @@ export const postQuery = graphql`
         }
       }
       parent {
-        ...on File {
+        ... on File {
           modifiedTime(formatString: "YYYY-MM-DD")
         }
       }

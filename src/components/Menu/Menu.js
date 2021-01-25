@@ -15,10 +15,10 @@ class Menu extends React.Component {
     this.items = [
       { to: "/", label: "Home", icon: FaHome },
       { to: "/tags/", label: "Tags", icon: FaTag },
-      { to: "/subscribe/", label: "Subscribe", icon: FaRss },
-      { to: "/learn/", label: "Learn", icon: FaBookReader },
-      { to: "/contact/", label: "Contact", icon: FaEnvelope },
-      { to: "/about/", label: "About", icon: FaUser },
+      // { to: "/subscribe/", label: "Subscribe", icon: FaRss },
+      // { to: "/learn/", label: "Learn", icon: FaBookReader },
+      // { to: "/contact/", label: "Contact", icon: FaEnvelope },
+      { to: "/about/", label: "About", icon: FaUser }
     ];
 
     this.renderedItems = []; // will contain references to rendered DOM elements of menu
@@ -139,14 +139,13 @@ class Menu extends React.Component {
             ))}
           </ul>
           {this.state.hiddenItems.length > 0 && <Expand onClick={this.toggleMenu} theme={theme} />}
-          {open &&
-            screenWidth >= 1024 && (
-              <ul className="hiddenItemList">
-                {this.state.hiddenItems.map(item => (
-                  <Item item={item} key={item.label} hiddenItem theme={theme} />
-                ))}
-              </ul>
-            )}
+          {open && screenWidth >= 1024 && (
+            <ul className="hiddenItemList">
+              {this.state.hiddenItems.map(item => (
+                <Item item={item} key={item.label} hiddenItem theme={theme} />
+              ))}
+            </ul>
+          )}
         </nav>
 
         {/* --- STYLES --- */}
